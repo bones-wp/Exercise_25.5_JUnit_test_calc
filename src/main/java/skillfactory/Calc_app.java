@@ -1,14 +1,15 @@
 package skillfactory;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
 public class Calc_app {
-    private static final Scanner sc= new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
     // создаём логгер для класса, задавая ему префикс по названию класса
-    private static final Logger logger = (Logger) LogManager.getLogger(Calc_app.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(Calc_app.class);
+
     public static void main(String[] args) {
         int i = sc.nextInt();
         logger.debug("Entered first num " + i);
@@ -17,22 +18,22 @@ public class Calc_app {
         System.out.print("Enter a char: ");
         String k = sc.next();
         logger.debug("Entered char " + k);
-        switch (k){
+        switch (k) {
             case "+":
-                i=getSum(i,j);
+                i = getSum(i, j);
                 break;
             case "-":
-                i=getSub(i,j);
+                i = getSub(i, j);
                 break;
             case "*":
-                i=getMultiple(i,j);
+                i = getMultiple(i, j);
                 break;
             case "/":
-                if (j==0){
+                if (j == 0) {
                     logger.error("can't divide by zero");
-                    i=0;
-                }else {
-                    i =getDivide( i , j);
+                    i = 0;
+                } else {
+                    i = getDivide(i, j);
                 }
                 break;
         }
@@ -41,18 +42,19 @@ public class Calc_app {
     }
 
     public static int getSum(int x, int y) {
-        return x+y;
+        return x + y;
     }
 
     public static int getDivide(int x, int y) {
-        return x/y;
+        return x / y;
     }
 
     public static int getMultiple(int x, int y) {
-        return x*y;
+        return x * y;
     }
+
     public static int getSub(int x, int y) {
-        return x-y;
+        return x - y;
     }
 
 }
